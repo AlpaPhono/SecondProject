@@ -1,27 +1,43 @@
 version: "3.8"
 services:
   service_1:
-    image: name-generator-front:v1
+    image: aalphonso/qa2:name-generator-front
     build: ./service_1
     container_name: service1
     networks:
       - example-net
+    ports:
+      - target: 5000
+        published: 5000
+        protocol: tcp
   service_2:
-    image: name-generator-chars:v1
+    image:  aalphonso/qa2:name-generator-prefix
     build: ./service_2
     container_name: service2
+    ports:
+      - target: 5001
+        published: 5001
+        protocol: tcp
     networks:
       - example-net
   service_3:
-    image: name-generator-suffix:v1
+    image:  aalphonso/qa2:name-generator-suffix
     build: ./service_3
     container_name: service3
+    ports:
+      - target: 5002
+        published: 5002
+        protocol: tcp
     networks:
       - example-net
   service_4:
-    image: name-generator-prize:v1
+    image:  aalphonso/qa2:name-generator-genre
     build: ./service_4
     container_name: service4
+    ports:
+      - target: 5003
+        published: 5003
+        protocol: tcp
     networks:
       - example-net    
   nginx:
@@ -41,3 +57,4 @@ services:
       - service_1
 networks:
   example-net:
+    driver: overlay
