@@ -1,19 +1,25 @@
 version: "3.8"
 services:
   service_1:
-    image: prize-generator-front:v1
+    image: name-generator-front:v1
     build: ./service_1
     container_name: service1
     networks:
       - example-net
   service_2:
-    image: prize-generator-chars:v1
+    image: name-generator-chars:v1
     build: ./service_2
     container_name: service2
     networks:
       - example-net
+  service_3:
+    image: name-generator-suffix:v1
+    build: ./service_3
+    container_name: service3
+    networks:
+      - example-net
   service_4:
-    image: prize-generator-prize:v1
+    image: name-generator-prize:v1
     build: ./service_4
     container_name: service4
     networks:
