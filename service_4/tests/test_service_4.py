@@ -11,8 +11,10 @@ class TestBase(TestCase):
 
 
 class Testprefix(TestBase):
-    @patch('application.routes.choice',return_value = "Young")
-    def test_get_prefix(self,patched):
-        response = self.client.get(url_for('get_text'))
+    def test_get_prefix(self):
+        suffix = "Soul" 
+        prefix = "Badu"
+        name =(prefix)+(suffix)
+        response = self.client.get(url_for('prize'),data=name)
         self.assert200(response)
-        self.assertIn(b"Young",response.data)
+        self.assertIn(b"You could be an RNB artist",response.data)
