@@ -11,10 +11,13 @@ class TestBase(TestCase):
 
 
 class Testprefix(TestBase):
-    def test_get_prefix(self):
-        suffix = "Soul" 
-        prefix = "Badu"
+    def test_genre(self):
+        suffix ="Badu" 
+        prefix = "Soul"
         name =(prefix)+(suffix)
-        response = self.client.get(url_for('prize'),data=name)
+        response = self.client.post(
+            url_for('genre'),
+            json={"prefix":"Soul", "suffix":"Badu"}
+            )
         self.assert200(response)
         self.assertIn(b"You could be an RNB artist",response.data)
