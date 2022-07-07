@@ -18,14 +18,3 @@ def prize():
         return "You could be a Rap Artist"
     else:
         return "You can do any Genre!"
-
-    # if suffix equals Gambit Killer Menice then return "Your Genre is Rock"
-    # AND Prefix equals 
-    # if suffix equals River Songs Purple then return "Your Genre is RnB"
-
-    if chars [0] == "a":
-        prizes = ([50] * 3) + [100]
-        prize = '£' + str(choice(prizes))
-        return prize 
-    else:
-        return "No prize for you"

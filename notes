@@ -1,2 +1,5 @@
 docker tag local-image:tagname new-repo:tagname
 docker push new-repo:tagname
+
+https://<PAT>@github.com/username/reponame.git
+https://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@github.com/AlpaPhono/SecondProject.git
