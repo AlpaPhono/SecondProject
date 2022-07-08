@@ -1,4 +1,4 @@
 #!/bin/bash
 docker-compose build
-docker login
+docker login --username --password
 docker-compose push
