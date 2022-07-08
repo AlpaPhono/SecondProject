@@ -3,13 +3,13 @@ pipeline{
     stages {
         stage("Enable my script folder to be executable") {
             steps {
-                //add git branch repo
+               git branch: 'namegenerator', url: 'https://github.com/AlpaPhono/SecondProject.git'
                sh "chmod +x ./scripts/*"
             }
         }
         stage("test") {
             steps {
-                //add git branch repo
+               git branch: 'namegenerator', url: 'https://github.com/AlpaPhono/SecondProject.git'
                sh "./script/test.sh"
             }
         }
