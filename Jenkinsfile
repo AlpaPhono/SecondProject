@@ -4,8 +4,7 @@ pipeline{
         stage("Enable my scripts folder as executable") {
             steps {
                git branch: 'namegenerator', url: 'https://github.com/AlpaPhono/SecondProject.git'
-               sh "bash test.sh"
-              
+               sh "bash scripts/test.sh"
         }
         stage("test") {
             steps {
@@ -32,4 +31,5 @@ pipeline{
             }
         }
     }
+}
 }
