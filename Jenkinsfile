@@ -14,8 +14,8 @@ pipeline {
             steps {
                 git branch: 'nameGenerator', url: 'https://github.com/AlpaPhono/SecondProject.git'
                 sh "docker-compose build"
-                sh "docker login --username ${DH_USN} --password ${DH_PWD}"
-                sh "docker-compose push"
+                //sh "docker login --username ${DH_USN} --password ${DH_PWD}"
+                //sh "docker-compose push"
             }
         }
     }
