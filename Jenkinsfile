@@ -18,6 +18,13 @@ pipeline {
                 sh "docker-compose push"
             }
         }
+        stage('swarm deploy ') {
+            steps {
+            
+                sh 'ssh Kaobi@10.154.0.5 "docker stack deploy --compose-file docker-compose.yaml namegenerator"'
+                
+            }
+        }
     }
 }
 
