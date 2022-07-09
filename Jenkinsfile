@@ -21,7 +21,7 @@ pipeline {
         stage('swarm deploy ') {
             steps {
             
-                sh 'ssh Kaobi@10.154.0.5 "docker stack deploy --compose-file docker-compose.yaml namegenerator"'
+                sh 'ssh Kaobi@10.154.0.5 "docker stack deploy --compose-file /home/Kaobi/docker-demos/prize-generator/docker-compose.yaml namegenerator"'
                 
             }
         }
