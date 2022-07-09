@@ -1,11 +1,11 @@
 pipeline{
     agent any
     stages {
-        stage("Enable my script folder to be executable") {
+        stage("Enable my scripts folder as executable") {
             steps {
                git branch: 'namegenerator', url: 'https://github.com/AlpaPhono/SecondProject.git'
-               sh "chmod +x ./scripts/*"
-            }
+               sh "bash test.sh"
+              
         }
         stage("test") {
             steps {
