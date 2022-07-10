@@ -5,9 +5,14 @@ pipeline {
        DH_PWD = credentials('DH_PWD')
     }
     stages {
-        stage('Run unit tests') {
+        // stage('Run unit tests') {
+        //     steps {
+        //         sh "bash scripts/test.sh"
+        //     }
+        // }
+        stage('anisble config') {
             steps {
-                sh "bash scripts/test.sh"
+                sh 'shh Kaobi@docker-vmj \'ansible-playbook -i /docker-demos/prize-generator/ansible/inventory.yaml /docker-demos/prize-generator/ansible/playbook.yaml\''
             }
         }
         stage('build, and push ') {
