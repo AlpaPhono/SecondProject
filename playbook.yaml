@@ -1,5 +1,2 @@
----
-- hosts: all  
-  become: yes  
-  tasks:
-  - shell: echo "ping"
+
+## a template

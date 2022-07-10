@@ -47,7 +47,7 @@ services:
         published: 5003
         protocol: tcp
     networks:
-      - example-net    
+      - example-net      
   nginx:
     image: nginx:latest
     container_name: nginx
