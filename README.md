@@ -36,12 +36,14 @@ The application randomly allocates artist stage names to the user using the four
 The following diagram illustrates how a user and the services interact with one another. 
 <p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/user%20services%20diagram.png" alt="test" width="1000" height="450"></p>
 
-### The app
+### 
+
+## The app
 ___
 The font-end user interface uses a very basic layout. It displays the randomly generated stage name and a genre suggestion. Upon refreshing the page a new name would be generated with a different genre suggestion
 <p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/service%201.png" alt="test" width="1000" height="450"></p>
 
-### Project Tracking 
+## Project Tracking 
 ___
 To fit one of the requirements I used a trello for my project tracking. Tasks were assigned that would aid in meeting the acceptance criteria for the project.. The MOSCOW principle was used with colour coding.
 <p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/trello%20board.png" alt="test" width="1000" height="450"></p>
@@ -51,7 +53,7 @@ At the start of the project a risk assesment was carried out. The diagram below 
 <p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/namegen%20risk.png" alt="test" width="1000" height="450"></p>
 
 ## Project Pipeline
-[insert image]
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/pipeline.png" alt="test" width="1000" height="450"></p>
 ### Development Process
 During the entire development of the app, Github was used for version control. Github is useful as as works as both remote storage for my work but also as a webhook that can trigger new builds within my jenkins pipeline.
 The web application was written in python, using the micro-framework Flask.
@@ -77,28 +79,37 @@ The code was built using docker, a containerisation tool. Then deployed onto dif
 This project runs on a CI/CD pipeline using jenkins installed on a vm. Jenkins allows for webhooks to be attached to the nameGenerator branch of my git repo. When code is pushed to the repository it will trigger a new build inside jenksins.
 Ansible was used to configure swarm worker vm's by installing docker and adding them to the swarm.
 
-### ipeline diagram
+### Pipeline diagram
 To further illustrate the flow of my CICD pipeline. I have provided a diagram.
 <p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/cicd%20pipeline.png" alt="test" width="1000" height="450"></p>
 
-###Jenkins Deployment Logs
+### Jenkins Deployment Logs
 Please find in this section recorded logs of a succesful build from my pipeline.
 This log includes the use of ansible configuring one of my vm's to be able to be part of the docker swarm.
 [Log](https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/Succesful%20pipeline.txt)
 
- 
+## Wrap up Section
+___
+### Challenges faced 
+One issue I had was my jenkins machine beaking the pipeline due to insufficient space in the machine.
+The build failure was an unforseen issue as there weren't significant changes from the previous build made to source code.
+In a production environment where sevral builds may be pushed to the jenkins server this isn't something that can be overlooked.
 
-### Current Imporvements
+To rectify this issue in the future, Jenkins has a 'discard old builds' option in its build configuration manager.
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/PROBLEMS-NOSPACE.png" alt="test" width="1000" height="450"></p>
+
+
+### Future Imporvements
 - Using a feature branch model to better organise the version control of my web app. A development branch was made however a seperate branch wasn't implimented when adding a new feature. This is an important approach to adopt as it allows a developer to build upon thier code with confidence that their last working commit is safe in within another branch.
+- Implementing an sql database so that data persists 
+- redesining aspects of the services so that a name can be genereated from user text input; such as user name.
+
+### Conclusion
+The purpose of this project was to produce deliver an application consisting of four microsevices, which interact with one another to generate objects based off of developer designed logic. The project was to be fully integrated with a CI/CD pipeline.
+In that regard this project meets the minimum requirements set. However In future projects I would like to increase the level of automation involved in the project in further utilise the power of ansible's modules to create and configure more vm's.
 
 
 
-
-
-
-
-
-
-
-
-
+### Credits
+___
+Thank you to the QA trainers Adam, Leon and Earl who supported me during this time to deliver this project.
