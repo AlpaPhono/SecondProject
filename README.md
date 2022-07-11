@@ -5,6 +5,7 @@ ___
 The purpose of this project was to produce an application consisting of four microsevices, which interact with one another to generate objects based off of developer designed logic. The project is to be fully integrated with a CI/CD pipeline.
 
 The minimum requirements of the project are:
+
 - An Asana board (or equivalent Kanban board tech) with full expansion on tasks needed to complete the project.
 - An Application fully integrated using the Feature-Branch model into a Version Control System which will subsequently be built through a CI server and deployed to a cloud-based virtual machine
 - If a change is made to a code base, then Webhooks should be used so that Jenkins recreates and redeploys the changed application
@@ -43,10 +44,10 @@ The font-end user interface uses a very basic layout. It displays the randomly g
 ### Project Tracking 
 ___
 To fit one of the requirements I used a trello for my project tracking. Tasks were assigned that would
-[insert trello board]
+
 ### Risk Assesment
 At the start of the project a risk assesment was carried out. The diagram below contains some of the possible risks that could occur during the process of creating the application. The likelihood of the risks occuring are colour coded to match levels given in a supplimented Key. Red being high risk and green being unlikely. A section for mitigations was created to seperate from things that were currently implimented to things that could be considered further along the project.
-[insert risk assesment]
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/namegen%20risk.png" alt="test" width="1000" height="450"></p>
 
 ## Project Pipeline
 [insert image]
