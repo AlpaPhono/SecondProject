@@ -74,12 +74,17 @@ ___
 The code was built using docker, a containerisation tool. Then deployed onto different vm's using the orchestration tool docker swarm.
 
 ### Automation
-___
 This project runs on a CI/CD pipeline using jenkins installed on a vm. Jenkins allows for webhooks to be attached to the nameGenerator branch of my git repo. When code is pushed to the repository it will trigger a new build inside jenksins.
 Ansible was used to configure swarm worker vm's by installing docker and adding them to the swarm.
 
+### ipeline diagram
+To further illustrate the flow of my CICD pipeline. I have provided a diagram.
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/cicd%20pipeline.png" alt="test" width="1000" height="450"></p>
 
-
+###Jenkins Deployment Logs
+Please find in this section recorded logs of a succesful build from my pipeline.
+This log includes the use of ansible configuring one of my vm's to be able to be part of the docker swarm.
+[Log](https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/Succesful%20pipeline.txt)
 
  
 
