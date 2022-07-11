@@ -1,0 +1,1180 @@
+Started by GitHub push by AlpaPhono
+Obtained Jenkinsfile from git https://github.com/AlpaPhono/SecondProject.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /home/jenkins/.jenkins/workspace/namegen
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/jenkins/.jenkins/workspace/namegen/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/AlpaPhono/SecondProject.git # timeout=10
+Fetching upstream changes from https://github.com/AlpaPhono/SecondProject.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/AlpaPhono/SecondProject.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/nameGenerator^{commit} # timeout=10
+Checking out Revision 82e11d417c8ede5ed8d8e2e0e2462302813ca749 (refs/remotes/origin/nameGenerator)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 82e11d417c8ede5ed8d8e2e0e2462302813ca749 # timeout=10
+Commit message: "testing full pipeline"
+ > git rev-list --no-walk 4bf7cbc23889eb29b9e1a9bf84924b4a6efcac33 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $DH_USN or $DH_PWD
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Run unit tests)
+[Pipeline] sh
++ bash scripts/test.sh
+Get:1 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Hit:2 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Get:3 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease [114 kB]
+Get:4 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease [99.8 kB]
+Hit:5 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy InRelease
+Hit:6 https://download.docker.com/linux/ubuntu jammy InRelease
+Fetched 324 kB in 2s (163 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3 is already the newest version (3.10.4-0ubuntu2).
+python3-pip is already the newest version (22.0.2+dfsg-1).
+python3-venv is already the newest version (3.10.4-0ubuntu2).
+The following packages were automatically installed and are no longer required:
+  libatasmart4 libblockdev-fs2 libblockdev-loop2 libblockdev-part-err2
+  libblockdev-part2 libblockdev-swap2 libblockdev-utils2 libblockdev2
+  libflashrom1 libftdi1-2 libmbim-glib4 libmbim-proxy libmm-glib0 libnuma1
+  libparted-fs-resize0 libqmi-glib5 libqmi-proxy libtcl8.6 libudisks2-0 tcl
+  tcl8.6 usb-modeswitch usb-modeswitch-data
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 18 not upgraded.
+Requirement already satisfied: flask in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: requests in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (2.28.1)
+Requirement already satisfied: requests_mock in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (1.9.3)
+Requirement already satisfied: flask_testing in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 4)) (0.8.1)
+Requirement already satisfied: pytest in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 5)) (7.1.2)
+Requirement already satisfied: pytest-cov in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 6)) (3.0.0)
+Requirement already satisfied: click>=8.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (8.1.3)
+Requirement already satisfied: Jinja2>=3.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (3.1.2)
+Requirement already satisfied: itsdangerous>=2.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: Werkzeug>=2.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (1.26.10)
+Requirement already satisfied: charset-normalizer<3,>=2 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (2.1.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (2022.6.15)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (3.3)
+Requirement already satisfied: six in ./venv/lib/python3.10/site-packages (from requests_mock->-r requirements.txt (line 3)) (1.16.0)
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.0.0)
+Requirement already satisfied: attrs>=19.2.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (21.4.0)
+Requirement already satisfied: iniconfig in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.1.1)
+Requirement already satisfied: packaging in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (21.3)
+Requirement already satisfied: tomli>=1.0.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (2.0.1)
+Requirement already satisfied: py>=1.8.2 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.11.0)
+Requirement already satisfied: coverage[toml]>=5.2.1 in ./venv/lib/python3.10/site-packages (from pytest-cov->-r requirements.txt (line 6)) (6.4.1)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.10/site-packages (from Jinja2>=3.0->flask->-r requirements.txt (line 1)) (2.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./venv/lib/python3.10/site-packages (from packaging->pytest->-r requirements.txt (line 5)) (3.0.9)
+============================= test session starts ==============================
+platform linux -- Python 3.10.4, pytest-7.1.2, pluggy-1.0.0
+rootdir: /home/jenkins/.jenkins/workspace/namegen/service_1
+plugins: requests-mock-1.9.3, cov-3.0.0
+collected 2 items
+
+tests/test_service_1.py ..                                               [100%]
+
+---------- coverage: platform linux, python 3.10.4-final-0 -----------
+Coverage HTML written to dir htmlcov
+
+
+============================== 2 passed in 0.79s ===============================
+Hit:1 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:4 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy InRelease
+Hit:5 https://download.docker.com/linux/ubuntu jammy InRelease
+Hit:6 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3 is already the newest version (3.10.4-0ubuntu2).
+python3-pip is already the newest version (22.0.2+dfsg-1).
+python3-venv is already the newest version (3.10.4-0ubuntu2).
+The following packages were automatically installed and are no longer required:
+  libatasmart4 libblockdev-fs2 libblockdev-loop2 libblockdev-part-err2
+  libblockdev-part2 libblockdev-swap2 libblockdev-utils2 libblockdev2
+  libflashrom1 libftdi1-2 libmbim-glib4 libmbim-proxy libmm-glib0 libnuma1
+  libparted-fs-resize0 libqmi-glib5 libqmi-proxy libtcl8.6 libudisks2-0 tcl
+  tcl8.6 usb-modeswitch usb-modeswitch-data
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 18 not upgraded.
+Requirement already satisfied: flask in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: flask-testing in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (0.8.1)
+Requirement already satisfied: pytest in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (7.1.2)
+Requirement already satisfied: pytest-cov in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 4)) (3.0.0)
+Requirement already satisfied: requests_mock in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 5)) (1.9.3)
+Requirement already satisfied: requests in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 6)) (2.28.1)
+Requirement already satisfied: Jinja2>=3.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (3.1.2)
+Requirement already satisfied: itsdangerous>=2.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: Werkzeug>=2.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: click>=8.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (8.1.3)
+Requirement already satisfied: iniconfig in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 3)) (1.1.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 3)) (1.0.0)
+Requirement already satisfied: py>=1.8.2 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 3)) (1.11.0)
+Requirement already satisfied: packaging in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 3)) (21.3)
+Requirement already satisfied: attrs>=19.2.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 3)) (21.4.0)
+Requirement already satisfied: tomli>=1.0.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 3)) (2.0.1)
+Requirement already satisfied: coverage[toml]>=5.2.1 in ./venv/lib/python3.10/site-packages (from pytest-cov->-r requirements.txt (line 4)) (6.4.1)
+Requirement already satisfied: six in ./venv/lib/python3.10/site-packages (from requests_mock->-r requirements.txt (line 5)) (1.16.0)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 6)) (1.26.10)
+Requirement already satisfied: charset-normalizer<3,>=2 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 6)) (2.1.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 6)) (2022.6.15)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 6)) (3.3)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.10/site-packages (from Jinja2>=3.0->flask->-r requirements.txt (line 1)) (2.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./venv/lib/python3.10/site-packages (from packaging->pytest->-r requirements.txt (line 3)) (3.0.9)
+============================= test session starts ==============================
+platform linux -- Python 3.10.4, pytest-7.1.2, pluggy-1.0.0
+rootdir: /home/jenkins/.jenkins/workspace/namegen/service_2
+plugins: requests-mock-1.9.3, cov-3.0.0
+collected 1 item
+
+tests/test_service_2.py .                                                [100%]
+
+---------- coverage: platform linux, python 3.10.4-final-0 -----------
+Coverage HTML written to dir htmlcov
+
+
+============================== 1 passed in 0.78s ===============================
+Hit:1 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:4 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy InRelease
+Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:6 https://download.docker.com/linux/ubuntu jammy InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3 is already the newest version (3.10.4-0ubuntu2).
+python3-pip is already the newest version (22.0.2+dfsg-1).
+python3-venv is already the newest version (3.10.4-0ubuntu2).
+The following packages were automatically installed and are no longer required:
+  libatasmart4 libblockdev-fs2 libblockdev-loop2 libblockdev-part-err2
+  libblockdev-part2 libblockdev-swap2 libblockdev-utils2 libblockdev2
+  libflashrom1 libftdi1-2 libmbim-glib4 libmbim-proxy libmm-glib0 libnuma1
+  libparted-fs-resize0 libqmi-glib5 libqmi-proxy libtcl8.6 libudisks2-0 tcl
+  tcl8.6 usb-modeswitch usb-modeswitch-data
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 18 not upgraded.
+Requirement already satisfied: flask in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: requests in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (2.28.1)
+Requirement already satisfied: requests_mock in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (1.9.3)
+Requirement already satisfied: flask_testing in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 4)) (0.8.1)
+Requirement already satisfied: pytest in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 5)) (7.1.2)
+Requirement already satisfied: pytest-cov in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 6)) (3.0.0)
+Requirement already satisfied: Jinja2>=3.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (3.1.2)
+Requirement already satisfied: itsdangerous>=2.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: click>=8.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (8.1.3)
+Requirement already satisfied: Werkzeug>=2.0 in ./venv/lib/python3.10/site-packages (from flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: charset-normalizer<3,>=2 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (2.1.0)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (3.3)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (2022.6.15)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (1.26.10)
+Requirement already satisfied: six in ./venv/lib/python3.10/site-packages (from requests_mock->-r requirements.txt (line 3)) (1.16.0)
+Requirement already satisfied: iniconfig in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.1.1)
+Requirement already satisfied: py>=1.8.2 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.11.0)
+Requirement already satisfied: packaging in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (21.3)
+Requirement already satisfied: tomli>=1.0.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (2.0.1)
+Requirement already satisfied: attrs>=19.2.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (21.4.0)
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.0.0)
+Requirement already satisfied: coverage[toml]>=5.2.1 in ./venv/lib/python3.10/site-packages (from pytest-cov->-r requirements.txt (line 6)) (6.4.1)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.10/site-packages (from Jinja2>=3.0->flask->-r requirements.txt (line 1)) (2.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./venv/lib/python3.10/site-packages (from packaging->pytest->-r requirements.txt (line 5)) (3.0.9)
+============================= test session starts ==============================
+platform linux -- Python 3.10.4, pytest-7.1.2, pluggy-1.0.0
+rootdir: /home/jenkins/.jenkins/workspace/namegen/service_3
+plugins: requests-mock-1.9.3, cov-3.0.0
+collected 1 item
+
+tests/test_service_3.py .                                                [100%]
+
+---------- coverage: platform linux, python 3.10.4-final-0 -----------
+Coverage HTML written to dir htmlcov
+
+
+============================== 1 passed in 0.80s ===============================
+Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:2 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:3 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:4 http://europe-west2.gce.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:5 https://ppa.launchpadcontent.net/ansible/ansible/ubuntu jammy InRelease
+Hit:6 https://download.docker.com/linux/ubuntu jammy InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3 is already the newest version (3.10.4-0ubuntu2).
+python3-pip is already the newest version (22.0.2+dfsg-1).
+python3-venv is already the newest version (3.10.4-0ubuntu2).
+The following packages were automatically installed and are no longer required:
+  libatasmart4 libblockdev-fs2 libblockdev-loop2 libblockdev-part-err2
+  libblockdev-part2 libblockdev-swap2 libblockdev-utils2 libblockdev2
+  libflashrom1 libftdi1-2 libmbim-glib4 libmbim-proxy libmm-glib0 libnuma1
+  libparted-fs-resize0 libqmi-glib5 libqmi-proxy libtcl8.6 libudisks2-0 tcl
+  tcl8.6 usb-modeswitch usb-modeswitch-data
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 18 not upgraded.
+Requirement already satisfied: Flask in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: requests in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 2)) (2.28.1)
+Requirement already satisfied: requests_mock in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 3)) (1.9.3)
+Requirement already satisfied: flask_testing in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 4)) (0.8.1)
+Requirement already satisfied: pytest in ./venv/lib/python3.10/site-packages (from -r requirements.txt (line 5)) (7.1.2)
+Requirement already satisfied: click>=8.0 in ./venv/lib/python3.10/site-packages (from Flask->-r requirements.txt (line 1)) (8.1.3)
+Requirement already satisfied: Jinja2>=3.0 in ./venv/lib/python3.10/site-packages (from Flask->-r requirements.txt (line 1)) (3.1.2)
+Requirement already satisfied: itsdangerous>=2.0 in ./venv/lib/python3.10/site-packages (from Flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: Werkzeug>=2.0 in ./venv/lib/python3.10/site-packages (from Flask->-r requirements.txt (line 1)) (2.1.2)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (3.3)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (2022.6.15)
+Requirement already satisfied: charset-normalizer<3,>=2 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (2.1.0)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in ./venv/lib/python3.10/site-packages (from requests->-r requirements.txt (line 2)) (1.26.10)
+Requirement already satisfied: six in ./venv/lib/python3.10/site-packages (from requests_mock->-r requirements.txt (line 3)) (1.16.0)
+Requirement already satisfied: py>=1.8.2 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.11.0)
+Requirement already satisfied: tomli>=1.0.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (2.0.1)
+Requirement already satisfied: packaging in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (21.3)
+Requirement already satisfied: iniconfig in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.1.1)
+Requirement already satisfied: attrs>=19.2.0 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (21.4.0)
+Requirement already satisfied: pluggy<2.0,>=0.12 in ./venv/lib/python3.10/site-packages (from pytest->-r requirements.txt (line 5)) (1.0.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.10/site-packages (from Jinja2>=3.0->Flask->-r requirements.txt (line 1)) (2.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in ./venv/lib/python3.10/site-packages (from packaging->pytest->-r requirements.txt (line 5)) (3.0.9)
+ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]
+__main__.py: error: unrecognized arguments: --cov=application --cov-report=html
+  inifile: None
+  rootdir: /home/jenkins/.jenkins/workspace/namegen/service_4
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (anisble config)
+[Pipeline] sh
++ ssh Kaobi@docker-vmj ansible-playbook -i docker-demos/prize-generator/ansible/inventory.yaml docker-demos/prize-generator/ansible/playbook.yaml
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [worker2]
+
+TASK [Install required system packages] ****************************************
+ok: [worker2]
+
+TASK [Add Docker GPG apt Key] **************************************************
+ok: [worker2]
+
+TASK [Add Docker Repository] ***************************************************
+ok: [worker2]
+
+TASK [docker engine] ***********************************************************
+ok: [worker2]
+
+TASK [Install Docker Module for Python] ****************************************
+ok: [worker2]
+
+TASK [group docker] ************************************************************
+ok: [worker2]
+
+PLAY RECAP *********************************************************************
+worker2                    : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (build, and push )
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/jenkins/.jenkins/workspace/namegen/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/AlpaPhono/SecondProject.git # timeout=10
+Fetching upstream changes from https://github.com/AlpaPhono/SecondProject.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/AlpaPhono/SecondProject.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/nameGenerator^{commit} # timeout=10
+Checking out Revision 82e11d417c8ede5ed8d8e2e0e2462302813ca749 (refs/remotes/origin/nameGenerator)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 82e11d417c8ede5ed8d8e2e0e2462302813ca749 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D nameGenerator # timeout=10
+ > git checkout -b nameGenerator 82e11d417c8ede5ed8d8e2e0e2462302813ca749 # timeout=10
+Commit message: "testing full pipeline"
+[Pipeline] sh
++ docker-compose build
+#1 [****/qa2:name-generator-genre internal] load build definition from Dockerfile
+#1 transferring dockerfile: 31B done
+#1 DONE 0.0s
+
+#2 [****/qa2:name-generator-front internal] load build definition from Dockerfile
+#2 transferring dockerfile: 31B done
+#2 DONE 0.1s
+
+#3 [****/qa2:name-generator-suffix internal] load build definition from Dockerfile
+#3 transferring dockerfile: 31B done
+#3 DONE 0.0s
+
+#4 [****/qa2:name-generator-prefix internal] load build definition from Dockerfile
+#4 transferring dockerfile: 31B done
+#4 DONE 0.0s
+
+#5 [****/qa2:name-generator-front internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [****/qa2:name-generator-genre internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [****/qa2:name-generator-suffix internal] load .dockerignore
+#7 transferring context: 2B 0.0s done
+#7 DONE 0.1s
+
+#8 [****/qa2:name-generator-prefix internal] load .dockerignore
+#8 transferring context: 2B 0.2s done
+#8 DONE 0.2s
+
+#9 [****/qa2:name-generator-genre internal] load metadata for docker.io/library/python:3.8
+#9 DONE 0.9s
+
+#10 [****/qa2:name-generator-suffix 1/4] FROM docker.io/library/python:3.8@sha256:2a01d88a1684e6d7f08030cf5ae73b536926c64076cab197e9e3d9f699255283
+#10 DONE 0.0s
+
+#11 [****/qa2:name-generator-suffix internal] load build context
+#11 ...
+
+#12 [****/qa2:name-generator-prefix internal] load build context
+#12 transferring context: 375.53kB 1.8s done
+#12 DONE 1.8s
+
+#11 [****/qa2:name-generator-suffix internal] load build context
+#11 transferring context: 375.61kB 1.8s done
+#11 DONE 1.8s
+
+#13 [****/qa2:name-generator-front 2/4] WORKDIR /app
+#13 CACHED
+
+#14 [****/qa2:name-generator-front internal] load build context
+#14 transferring context: 375.69kB 2.0s done
+#14 DONE 2.1s
+
+#15 [****/qa2:name-generator-front 3/4] COPY . .
+#15 ...
+
+#16 [****/qa2:name-generator-genre internal] load build context
+#16 transferring context: 252.61kB 2.0s done
+#16 DONE 2.1s
+
+#17 [****/qa2:name-generator-genre 3/4] COPY . .
+#17 CACHED
+
+#18 [****/qa2:name-generator-genre 4/4] RUN pip3 install -r requirements.txt
+#18 CACHED
+
+#19 [****/qa2:name-generator-genre] exporting to image
+#19 exporting layers done
+#19 writing image sha256:9ae44ca2ed692a0b4830df29fa5aecd2634d1c276375849efd31fb5d19f72322 done
+#19 naming to docker.io/****/qa2:name-generator-genre done
+#19 DONE 0.0s
+
+#20 [****/qa2:name-generator-suffix 3/4] ADD . .
+#20 DONE 5.3s
+
+#21 [****/qa2:name-generator-prefix 3/4] COPY . .
+#21 DONE 5.5s
+
+#15 [****/qa2:name-generator-front 3/4] COPY . .
+#15 DONE 5.2s
+
+#22 [****/qa2:name-generator-prefix 4/4] RUN pip3 install -r requirements.txt
+#22 ...
+
+#23 [****/qa2:name-generator-front 4/4] RUN pip3 install -r requirements.txt
+#23 ...
+
+#24 [****/qa2:name-generator-suffix 4/4] RUN pip3 install -r requirements.txt
+#24 26.67 Collecting flask
+#24 26.72   Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+#24 26.77      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.2/95.2 KB 3.7 MB/s eta 0:00:00
+#24 ...
+
+#23 [****/qa2:name-generator-front 4/4] RUN pip3 install -r requirements.txt
+#23 26.77 Collecting flask
+#23 26.96   Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+#23 27.19      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.2/95.2 KB 409.0 kB/s eta 0:00:00
+#23 27.70 Collecting requests
+#23 27.71   Downloading requests-2.28.1-py3-none-any.whl (62 kB)
+#23 27.74      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 KB 4.9 MB/s eta 0:00:00
+#23 27.95 Collecting requests_mock
+#23 27.96   Downloading requests_mock-1.9.3-py2.py3-none-any.whl (27 kB)
+#23 28.02 Collecting flask_testing
+#23 28.04   Downloading Flask-Testing-0.8.1.tar.gz (45 kB)
+#23 28.19      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.2/45.2 KB 2.3 MB/s eta 0:00:00
+#23 28.26   Preparing metadata (setup.py): started
+#23 32.99   Preparing metadata (setup.py): finished with status 'done'
+#23 34.96 Collecting pytest
+#23 34.99   Downloading pytest-7.1.2-py3-none-any.whl (297 kB)
+#23 35.01      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 297.0/297.0 KB 16.5 MB/s eta 0:00:00
+#23 35.49 Collecting pytest-cov
+#23 35.50   Downloading pytest_cov-3.0.0-py3-none-any.whl (20 kB)
+#23 ...
+
+#22 [****/qa2:name-generator-prefix 4/4] RUN pip3 install -r requirements.txt
+#22 27.47 Collecting flask
+#22 27.96   Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+#22 28.18      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.2/95.2 KB 420.9 kB/s eta 0:00:00
+#22 28.41 Collecting flask-testing
+#22 28.41   Downloading Flask-Testing-0.8.1.tar.gz (45 kB)
+#22 28.46      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.2/45.2 KB 827.2 kB/s eta 0:00:00
+#22 28.66   Preparing metadata (setup.py): started
+#22 33.47   Preparing metadata (setup.py): finished with status 'done'
+#22 34.26 Collecting pytest
+#22 34.40   Downloading pytest-7.1.2-py3-none-any.whl (297 kB)
+#22 34.46      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 297.0/297.0 KB 6.6 MB/s eta 0:00:00
+#22 35.24 Collecting pytest-cov
+#22 35.26   Downloading pytest_cov-3.0.0-py3-none-any.whl (20 kB)
+#22 35.71 Collecting requests_mock
+#22 35.73   Downloading requests_mock-1.9.3-py2.py3-none-any.whl (27 kB)
+#22 36.26 Collecting requests
+#22 36.40   Downloading requests-2.28.1-py3-none-any.whl (62 kB)
+#22 36.42      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 KB 8.7 MB/s eta 0:00:00
+#22 ...
+
+#24 [****/qa2:name-generator-suffix 4/4] RUN pip3 install -r requirements.txt
+#24 26.77      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.2/95.2 KB 3.7 MB/s eta 0:00:00
+#24 27.76 Collecting requests
+#24 27.78   Downloading requests-2.28.1-py3-none-any.whl (62 kB)
+#24 27.97      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.8/62.8 KB 292.2 kB/s eta 0:00:00
+#24 28.23 Collecting requests_mock
+#24 28.25   Downloading requests_mock-1.9.3-py2.py3-none-any.whl (27 kB)
+#24 28.70 Collecting flask_testing
+#24 28.77   Downloading Flask-Testing-0.8.1.tar.gz (45 kB)
+#24 28.92      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.2/45.2 KB 4.7 MB/s eta 0:00:00
+#24 28.96   Preparing metadata (setup.py): started
+#24 34.49   Preparing metadata (setup.py): finished with status 'done'
+#24 35.42 Collecting pytest
+#24 35.43   Downloading pytest-7.1.2-py3-none-any.whl (297 kB)
+#24 35.50      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 297.0/297.0 KB 5.4 MB/s eta 0:00:00
+#24 35.77 Collecting pytest-cov
+#24 35.93   Downloading pytest_cov-3.0.0-py3-none-any.whl (20 kB)
+#24 36.76 Collecting Werkzeug>=2.0
+#24 36.77   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+#24 ...
+
+#22 [****/qa2:name-generator-prefix 4/4] RUN pip3 install -r requirements.txt
+#22 36.90 Collecting Werkzeug>=2.0
+#22 36.91   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+#22 36.98      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.9/224.9 KB 6.2 MB/s eta 0:00:00
+#22 37.19 Collecting itsdangerous>=2.0
+#22 37.20   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+#22 37.73 Collecting Jinja2>=3.0
+#22 37.75   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#22 37.93      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 KB 7.9 MB/s eta 0:00:00
+#22 38.92 Collecting importlib-metadata>=3.6.0
+#22 38.93   Downloading importlib_metadata-4.12.0-py3-none-any.whl (21 kB)
+#22 39.22 Collecting click>=8.0
+#22 39.23   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+#22 39.25      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 KB 12.2 MB/s eta 0:00:00
+#22 39.68 Collecting attrs>=19.2.0
+#22 39.69   Downloading attrs-21.4.0-py2.py3-none-any.whl (60 kB)
+#22 39.70      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 KB 7.7 MB/s eta 0:00:00
+#22 40.23 Collecting tomli>=1.0.0
+#22 40.25   Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+#22 40.43 Collecting iniconfig
+#22 40.44   Downloading iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+#22 41.17 Collecting packaging
+#22 41.18   Downloading packaging-21.3-py3-none-any.whl (40 kB)
+#22 41.20      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 KB 1.9 MB/s eta 0:00:00
+#22 41.47 Collecting py>=1.8.2
+#22 41.48   Downloading py-1.11.0-py2.py3-none-any.whl (98 kB)
+#22 41.50      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.7/98.7 KB 5.4 MB/s eta 0:00:00
+#22 42.16 Collecting pluggy<2.0,>=0.12
+#22 42.17   Downloading pluggy-1.0.0-py2.py3-none-any.whl (13 kB)
+#22 ...
+
+#24 [****/qa2:name-generator-suffix 4/4] RUN pip3 install -r requirements.txt
+#24 37.03      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.9/224.9 KB 892.6 kB/s eta 0:00:00
+#24 37.49 Collecting click>=8.0
+#24 37.50   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+#24 37.52      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 KB 12.4 MB/s eta 0:00:00
+#24 37.92 Collecting Jinja2>=3.0
+#24 37.93   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#24 37.97      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 KB 6.6 MB/s eta 0:00:00
+#24 39.02 Collecting importlib-metadata>=3.6.0
+#24 39.16   Downloading importlib_metadata-4.12.0-py3-none-any.whl (21 kB)
+#24 39.26 Collecting itsdangerous>=2.0
+#24 39.27   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+#24 39.77 Collecting charset-normalizer<3,>=2
+#24 39.93   Downloading charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+#24 40.18 Collecting certifi>=2017.4.17
+#24 40.19   Downloading certifi-2022.6.15-py3-none-any.whl (160 kB)
+#24 40.22      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.2/160.2 KB 9.1 MB/s eta 0:00:00
+#24 40.53 Collecting idna<4,>=2.5
+#24 40.67   Downloading idna-3.3-py3-none-any.whl (61 kB)
+#24 40.69      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.2/61.2 KB 6.8 MB/s eta 0:00:00
+#24 41.20 Collecting urllib3<1.27,>=1.21.1
+#24 41.22   Downloading urllib3-1.26.10-py2.py3-none-any.whl (139 kB)
+#24 41.26      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.2/139.2 KB 5.9 MB/s eta 0:00:00
+#24 42.16 Collecting six
+#24 42.16   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+#24 42.53 Collecting pluggy<2.0,>=0.12
+#24 42.68   Downloading pluggy-1.0.0-py2.py3-none-any.whl (13 kB)
+#24 42.96 Collecting attrs>=19.2.0
+#24 42.97   Downloading attrs-21.4.0-py2.py3-none-any.whl (60 kB)
+#24 42.99      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 KB 4.9 MB/s eta 0:00:00
+#24 43.44 Collecting iniconfig
+#24 43.46   Downloading iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+#24 43.72 Collecting tomli>=1.0.0
+#24 43.72   Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+#24 44.26 Collecting packaging
+#24 44.27   Downloading packaging-21.3-py3-none-any.whl (40 kB)
+#24 44.28      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 KB 5.4 MB/s eta 0:00:00
+#24 44.98 Collecting py>=1.8.2
+#24 44.99   Downloading py-1.11.0-py2.py3-none-any.whl (98 kB)
+#24 45.01      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.7/98.7 KB 11.5 MB/s eta 0:00:00
+#24 ...
+
+#23 [****/qa2:name-generator-front 4/4] RUN pip3 install -r requirements.txt
+#23 36.99 Collecting importlib-metadata>=3.6.0
+#23 37.00   Downloading importlib_metadata-4.12.0-py3-none-any.whl (21 kB)
+#23 37.53 Collecting Werkzeug>=2.0
+#23 37.93   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+#23 37.96      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 224.9/224.9 KB 14.9 MB/s eta 0:00:00
+#23 38.18 Collecting itsdangerous>=2.0
+#23 38.19   Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+#23 38.46 Collecting Jinja2>=3.0
+#23 38.48   Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+#23 38.51      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.1/133.1 KB 6.9 MB/s eta 0:00:00
+#23 38.95 Collecting click>=8.0
+#23 38.95   Downloading click-8.1.3-py3-none-any.whl (96 kB)
+#23 39.00      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.6/96.6 KB 2.7 MB/s eta 0:00:00
+#23 40.47 Collecting urllib3<1.27,>=1.21.1
+#23 40.50   Downloading urllib3-1.26.10-py2.py3-none-any.whl (139 kB)
+#23 40.52      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.2/139.2 KB 8.7 MB/s eta 0:00:00
+#23 40.98 Collecting charset-normalizer<3,>=2
+#23 41.00   Downloading charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+#23 41.47 Collecting certifi>=2017.4.17
+#23 41.52   Downloading certifi-2022.6.15-py3-none-any.whl (160 kB)
+#23 42.17      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.2/160.2 KB 1.0 MB/s eta 0:00:00
+#23 42.17 Collecting idna<4,>=2.5
+#23 42.17   Downloading idna-3.3-py3-none-any.whl (61 kB)
+#23 42.20      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.2/61.2 KB 3.5 MB/s eta 0:00:00
+#23 42.74 Collecting six
+#23 42.76   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+#23 44.20 Collecting tomli>=1.0.0
+#23 44.21   Downloading tomli-2.0.1-py3-none-any.whl (12 kB)
+#23 44.93 Collecting pluggy<2.0,>=0.12
+#23 44.93   Downloading pluggy-1.0.0-py2.py3-none-any.whl (13 kB)
+#23 44.93 Collecting attrs>=19.2.0
+#23 44.94   Downloading attrs-21.4.0-py2.py3-none-any.whl (60 kB)
+#23 44.95      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 KB 7.2 MB/s eta 0:00:00
+#23 45.17 Collecting iniconfig
+#23 45.19   Downloading iniconfig-1.1.1-py2.py3-none-any.whl (5.0 kB)
+#23 45.53 Collecting py>=1.8.2
+#23 45.54   Downloading py-1.11.0-py2.py3-none-any.whl (98 kB)
+#23 45.69      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.7/98.7 KB 5.5 MB/s eta 0:00:00
+#23 46.18 Collecting packaging
+#23 46.20   Downloading packaging-21.3-py3-none-any.whl (40 kB)
+#23 46.23      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.8/40.8 KB 5.5 MB/s eta 0:00:00
+#23 ...
+
+#22 [****/qa2:name-generator-prefix 4/4] RUN pip3 install -r requirements.txt
+#22 48.25 Collecting coverage[toml]>=5.2.1
+#22 48.27   Downloading coverage-6.4.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (213 kB)
+#22 48.41      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 213.3/213.3 KB 1.5 MB/s eta 0:00:00
+#22 49.17 Collecting six
+#22 49.18   Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+#22 49.43 Collecting certifi>=2017.4.17
+#22 49.44   Downloading certifi-2022.6.15-py3-none-any.whl (160 kB)
+#22 49.47      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.2/160.2 KB 8.1 MB/s eta 0:00:00
+#22 50.01 Collecting urllib3<1.27,>=1.21.1
+#22 50.02   Downloading urllib3-1.26.10-py2.py3-none-any.whl (139 kB)
+#22 50.18      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.2/139.2 KB 8.6 MB/s eta 0:00:00
+#22 50.42 Collecting idna<4,>=2.5
+#22 50.43   Downloading idna-3.3-py3-none-any.whl (61 kB)
+#22 50.47      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.2/61.2 KB 4.8 MB/s eta 0:00:00
+#22 50.76 Collecting charset-normalizer<3,>=2
+#22 50.77   Downloading charset_normalizer-2.1.0-py3-none-any.whl (39 kB)
+#22 52.72 Collecting zipp>=0.5
+#22 52.74   Downloading zipp-3.8.0-py3-none-any.whl (5.4 kB)
+#22 ...
+
+#23 [****/qa2:name-generator-front 4/4] RUN pip3 install -r requirements.txt
+#23 53.29 Collecting coverage[toml]>=5.2.1
+#23 53.44   Downloading coverage-6.4.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (213 kB)
+#23 53.51      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 213.3/213.3 KB 5.7 MB/s eta 0:00:00
+#23 54.78 Collecting zipp>=0.5
+#23 54.92   Downloading zipp-3.8.0-py3-none-any.whl (5.4 kB)
+#23 56.04 Collecting MarkupSafe>=2.0
+#23 56.04   Downloading MarkupSafe-2.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#23 57.48 Collecting pyparsing!=3.0.5,>=2.0.2
+#23 57.50   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+#23 57.52      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 KB 10.2 MB/s eta 0:00:00
+#23 59.46 Building wheels for collected packages: flask_testing
+#23 59.47   Building wheel for flask_testing (setup.py): started
+#23 ...
+
+#24 [****/qa2:name-generator-suffix 4/4] RUN pip3 install -r requirements.txt
+#24 51.53 Collecting coverage[toml]>=5.2.1
+#24 51.67   Downloading coverage-6.4.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (213 kB)
+#24 51.69      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 213.3/213.3 KB 21.4 MB/s eta 0:00:00
+#24 52.93 Collecting zipp>=0.5
+#24 52.94   Downloading zipp-3.8.0-py3-none-any.whl (5.4 kB)
+#24 53.98 Collecting MarkupSafe>=2.0
+#24 53.99   Downloading MarkupSafe-2.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#24 54.96 Collecting pyparsing!=3.0.5,>=2.0.2
+#24 54.97   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+#24 54.98      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 KB 14.0 MB/s eta 0:00:00
+#24 55.49 Building wheels for collected packages: flask_testing
+#24 55.49   Building wheel for flask_testing (setup.py): started
+#24 60.23   Building wheel for flask_testing (setup.py): finished with status 'done'
+#24 60.24   Created wheel for flask_testing: filename=Flask_Testing-0.8.1-py3-none-any.whl size=8189 sha256=c3a2742f9da19e8a82b09e1e708e3b7dd3b0266ab16e994f3b956259ff25c19e
+#24 60.24   Stored in directory: /root/.cache/pip/wheels/26/4d/a9/43af17400718057df8d0798e01ea4dafa15548261c180aa7f7
+#24 60.25 Successfully built flask_testing
+#24 63.45 Installing collected packages: iniconfig, zipp, Werkzeug, urllib3, tomli, six, pyparsing, py, pluggy, MarkupSafe, itsdangerous, idna, coverage, click, charset-normalizer, certifi, attrs, requests, packaging, Jinja2, importlib-metadata, requests_mock, pytest, flask, pytest-cov, flask_testing
+#24 ...
+
+#22 [****/qa2:name-generator-prefix 4/4] RUN pip3 install -r requirements.txt
+#22 53.72 Collecting MarkupSafe>=2.0
+#22 53.74   Downloading MarkupSafe-2.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+#22 56.02 Collecting pyparsing!=3.0.5,>=2.0.2
+#22 56.16   Downloading pyparsing-3.0.9-py3-none-any.whl (98 kB)
+#22 56.18      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 98.3/98.3 KB 10.9 MB/s eta 0:00:00
+#22 56.98 Building wheels for collected packages: flask-testing
+#22 56.98   Building wheel for flask-testing (setup.py): started
+#22 63.22   Building wheel for flask-testing (setup.py): finished with status 'done'
+#22 63.22   Created wheel for flask-testing: filename=Flask_Testing-0.8.1-py3-none-any.whl size=8189 sha256=6653c8ac201415a95ef5d9783559d9225fba8d28bb3c54b958c2edff4d76af3c
+#22 63.22   Stored in directory: /root/.cache/pip/wheels/26/4d/a9/43af17400718057df8d0798e01ea4dafa15548261c180aa7f7
+#22 63.22 Successfully built flask-testing
+#22 64.95 Installing collected packages: iniconfig, zipp, Werkzeug, urllib3, tomli, six, pyparsing, py, pluggy, MarkupSafe, itsdangerous, idna, coverage, click, charset-normalizer, certifi, attrs, requests, packaging, Jinja2, importlib-metadata, requests_mock, pytest, flask, pytest-cov, flask-testing
+#22 ...
+
+#23 [****/qa2:name-generator-front 4/4] RUN pip3 install -r requirements.txt
+#23 66.00   Building wheel for flask_testing (setup.py): finished with status 'done'
+#23 66.00   Created wheel for flask_testing: filename=Flask_Testing-0.8.1-py3-none-any.whl size=8189 sha256=10dbd477d74e88621a38ff83321c83ba99edf275e85cfd380be25a0968b20cc5
+#23 66.00   Stored in directory: /root/.cache/pip/wheels/26/4d/a9/43af17400718057df8d0798e01ea4dafa15548261c180aa7f7
+#23 66.01 Successfully built flask_testing
+#23 69.72 Installing collected packages: iniconfig, zipp, Werkzeug, urllib3, tomli, six, pyparsing, py, pluggy, MarkupSafe, itsdangerous, idna, coverage, click, charset-normalizer, certifi, attrs, requests, packaging, Jinja2, importlib-metadata, requests_mock, pytest, flask, pytest-cov, flask_testing
+#23 ...
+
+#22 [****/qa2:name-generator-prefix 4/4] RUN pip3 install -r requirements.txt
+#22 83.90 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 attrs-21.4.0 certifi-2022.6.15 charset-normalizer-2.1.0 click-8.1.3 coverage-6.4.1 flask-2.1.2 flask-testing-0.8.1 idna-3.3 importlib-metadata-4.12.0 iniconfig-1.1.1 itsdangerous-2.1.2 packaging-21.3 pluggy-1.0.0 py-1.11.0 pyparsing-3.0.9 pytest-7.1.2 pytest-cov-3.0.0 requests-2.28.1 requests_mock-1.9.3 six-1.16.0 tomli-2.0.1 urllib3-1.26.10 zipp-3.8.0
+#22 83.90 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#22 85.26 WARNING: You are using pip version 22.0.4; however, version 22.1.2 is available.
+#22 85.26 You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+#22 DONE 89.2s
+
+#24 [****/qa2:name-generator-suffix 4/4] RUN pip3 install -r requirements.txt
+#24 84.53 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 attrs-21.4.0 certifi-2022.6.15 charset-normalizer-2.1.0 click-8.1.3 coverage-6.4.1 flask-2.1.2 flask_testing-0.8.1 idna-3.3 importlib-metadata-4.12.0 iniconfig-1.1.1 itsdangerous-2.1.2 packaging-21.3 pluggy-1.0.0 py-1.11.0 pyparsing-3.0.9 pytest-7.1.2 pytest-cov-3.0.0 requests-2.28.1 requests_mock-1.9.3 six-1.16.0 tomli-2.0.1 urllib3-1.26.10 zipp-3.8.0
+#24 84.53 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#24 85.92 WARNING: You are using pip version 22.0.4; however, version 22.1.2 is available.
+#24 85.92 You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+#24 DONE 89.2s
+
+#19 [****/qa2:name-generator-prefix] exporting to image
+#19 exporting layers
+#19 ...
+
+#23 [****/qa2:name-generator-front 4/4] RUN pip3 install -r requirements.txt
+#23 90.97 Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.1.2 attrs-21.4.0 certifi-2022.6.15 charset-normalizer-2.1.0 click-8.1.3 coverage-6.4.1 flask-2.1.2 flask_testing-0.8.1 idna-3.3 importlib-metadata-4.12.0 iniconfig-1.1.1 itsdangerous-2.1.2 packaging-21.3 pluggy-1.0.0 py-1.11.0 pyparsing-3.0.9 pytest-7.1.2 pytest-cov-3.0.0 requests-2.28.1 requests_mock-1.9.3 six-1.16.0 tomli-2.0.1 urllib3-1.26.10 zipp-3.8.0
+#23 91.02 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#23 91.74 WARNING: You are using pip version 22.0.4; however, version 22.1.2 is available.
+#23 91.74 You should consider upgrading via the '/usr/local/bin/python -m pip install --upgrade pip' command.
+#23 DONE 93.2s
+
+#19 [****/qa2:name-generator-front] exporting to image
+#19 exporting layers 21.3s done
+#19 writing image sha256:ea55968f54ad2594073ceedcf66cbca939503ce3ac270d74cd1081f5d70fc03e done
+#19 naming to docker.io/****/qa2:name-generator-prefix done
+#19 exporting layers 24.3s done
+#19 exporting layers 20.4s done
+#19 writing image sha256:78e62db3cd3b16702192fd403e0b540b6430cf1413558fba695652bc8408087e done
+#19 naming to docker.io/****/qa2:name-generator-suffix done
+#19 writing image sha256:83bc0148aa9257fb18f4a2be059b09a794a94ecaf76c33eed4936e186d1fff36 done
+#19 naming to docker.io/****/qa2:name-generator-front done
+#19 DONE 25.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [DH_USN, DH_PWD]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ docker login --username **** --password ****
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /home/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[Pipeline] sh
++ docker-compose push
+nginx Skipped 
+Pushing service_2: bf44dada7bb9 Preparing 
+Pushing service_2: fdde39396616 Preparing 
+Pushing service_2: 851e920a4b5b Preparing 
+Pushing service_2: 411f40eb017c Preparing 
+Pushing service_2: dec6f77f7d95 Preparing 
+Pushing service_2: f9e764264832 Preparing 
+Pushing service_2: ca5c6d5c3d01 Preparing 
+Pushing service_2: 33a247b4fc52 Preparing 
+Pushing service_2: 5afd661c6106 Preparing 
+Pushing service_2: 66183893ba24 Preparing 
+Pushing service_2: 6840c8ff46bd Preparing 
+Pushing service_2: 97d5fec864d8 Preparing 
+Pushing service_2: bf44dada7bb9 Waiting 
+Pushing service_2: fdde39396616 Waiting 
+Pushing service_3: 8b1b3b391054 Preparing 
+Pushing service_3: 56f03898239d Preparing 
+Pushing service_3: 851e920a4b5b Preparing 
+Pushing service_3: 411f40eb017c Preparing 
+Pushing service_3: dec6f77f7d95 Preparing 
+Pushing service_3: f9e764264832 Preparing 
+Pushing service_3: ca5c6d5c3d01 Preparing 
+Pushing service_3: 33a247b4fc52 Preparing 
+Pushing service_3: 5afd661c6106 Preparing 
+Pushing service_3: 66183893ba24 Preparing 
+Pushing service_3: 6840c8ff46bd Preparing 
+Pushing service_3: 97d5fec864d8 Preparing 
+Pushing service_3: ca5c6d5c3d01 Waiting 
+Pushing service_3: 33a247b4fc52 Waiting 
+Pushing service_3: 5afd661c6106 Waiting 
+Pushing service_3: 66183893ba24 Waiting 
+Pushing service_3: 6840c8ff46bd Waiting 
+Pushing service_3: 97d5fec864d8 Waiting 
+Pushing service_2: 33a247b4fc52 Waiting 
+Pushing service_2: 5afd661c6106 Waiting 
+Pushing service_2: 66183893ba24 Waiting 
+Pushing service_2: 6840c8ff46bd Waiting 
+Pushing service_2: ca5c6d5c3d01 Waiting 
+Pushing service_2: 97d5fec864d8 Waiting 
+Pushing service_1: 323e29ae1be9 Preparing 
+Pushing service_1: 6d8392515670 Preparing 
+Pushing service_1: 851e920a4b5b Preparing 
+Pushing service_1: 411f40eb017c Preparing 
+Pushing service_1: dec6f77f7d95 Preparing 
+Pushing service_1: f9e764264832 Preparing 
+Pushing service_1: ca5c6d5c3d01 Preparing 
+Pushing service_1: 33a247b4fc52 Preparing 
+Pushing service_1: 5afd661c6106 Preparing 
+Pushing service_1: 66183893ba24 Preparing 
+Pushing service_1: 6840c8ff46bd Preparing 
+Pushing service_1: 97d5fec864d8 Preparing 
+Pushing service_1: 97d5fec864d8 Waiting 
+Pushing service_1: 323e29ae1be9 Waiting 
+Pushing service_1: 6d8392515670 Waiting 
+Pushing service_1: ca5c6d5c3d01 Waiting 
+Pushing service_1: 33a247b4fc52 Waiting 
+Pushing service_1: 5afd661c6106 Waiting 
+Pushing service_1: 66183893ba24 Waiting 
+Pushing service_1: 6840c8ff46bd Waiting 
+Pushing service_1: f9e764264832 Waiting 
+Pushing service_3: f9e764264832 Waiting 
+Pushing service_4: 156f52a4efcd Preparing 
+Pushing service_4: 12551adf8f88 Preparing 
+Pushing service_4: 851e920a4b5b Preparing 
+Pushing service_4: 411f40eb017c Preparing 
+Pushing service_4: dec6f77f7d95 Preparing 
+Pushing service_4: f9e764264832 Preparing 
+Pushing service_4: ca5c6d5c3d01 Preparing 
+Pushing service_4: 33a247b4fc52 Preparing 
+Pushing service_4: 5afd661c6106 Preparing 
+Pushing service_4: 66183893ba24 Preparing 
+Pushing service_4: 6840c8ff46bd Preparing 
+Pushing service_4: 97d5fec864d8 Preparing 
+Pushing service_4: 97d5fec864d8 Waiting 
+Pushing service_4: 156f52a4efcd Waiting 
+Pushing service_4: 12551adf8f88 Waiting 
+Pushing service_4: ca5c6d5c3d01 Waiting 
+Pushing service_4: 33a247b4fc52 Waiting 
+Pushing service_4: 5afd661c6106 Waiting 
+Pushing service_4: 66183893ba24 Waiting 
+Pushing service_4: 6840c8ff46bd Waiting 
+Pushing service_4: f9e764264832 Waiting 
+Pushing service_2: f9e764264832 Waiting 
+Pushing service_4: dec6f77f7d95 Layer already exists 
+Pushing service_4: 411f40eb017c Layer already exists 
+Pushing service_2: dec6f77f7d95 Layer already exists 
+Pushing service_2: 411f40eb017c Layer already exists 
+Pushing service_3: dec6f77f7d95 Layer already exists 
+Pushing service_3: 411f40eb017c Layer already exists 
+Pushing service_1: dec6f77f7d95 Layer already exists 
+Pushing service_1: 411f40eb017c Layer already exists 
+Pushing service_3: 851e920a4b5b Layer already exists 
+Pushing service_1: 851e920a4b5b Layer already exists 
+Pushing service_2: 851e920a4b5b Layer already exists 
+Pushing service_4: 851e920a4b5b Layer already exists 
+Pushing service_3: 8b1b3b391054 Pushing [>                                                  ]    237kB/21.69MB
+Pushing service_3: 56f03898239d Pushing [>                                                  ]  288.7kB/27.15MB
+Pushing service_4: ca5c6d5c3d01 Layer already exists 
+Pushing service_4: f9e764264832 Layer already exists 
+Pushing service_2: ca5c6d5c3d01 Layer already exists 
+Pushing service_2: f9e764264832 Layer already exists 
+Pushing service_3: 8b1b3b391054 Pushing [=>                                                 ]  465.9kB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=>                                                 ]  850.8kB/27.15MB
+Pushing service_3: ca5c6d5c3d01 Layer already exists 
+Pushing service_3: f9e764264832 Layer already exists 
+Pushing service_1: ca5c6d5c3d01 Layer already exists 
+Pushing service_1: f9e764264832 Layer already exists 
+Pushing service_2: 33a247b4fc52 Layer already exists 
+Pushing service_4: 33a247b4fc52 Layer already exists 
+Pushing service_1: 33a247b4fc52 Layer already exists 
+Pushing service_3: 33a247b4fc52 Layer already exists 
+Pushing service_3: 56f03898239d Pushing [==>                                                ]  1.127MB/27.15MB
+Pushing service_3: 56f03898239d Pushing [==>                                                ]  1.416MB/27.15MB
+Pushing service_3: 56f03898239d Pushing [====>                                              ]  2.526MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [==>                                                ]  1.146MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [====>                                              ]   1.83MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [======>                                            ]  3.378MB/27.15MB
+Pushing service_1: 66183893ba24 Layer already exists 
+Pushing service_1: 6840c8ff46bd Layer already exists 
+Pushing service_3: 66183893ba24 Layer already exists 
+Pushing service_3: 8b1b3b391054 Pushing [====>                                              ]  2.063MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=======>                                           ]  4.197MB/27.15MB
+Pushing service_3: 6840c8ff46bd Layer already exists 
+Pushing service_4: 66183893ba24 Layer already exists 
+Pushing service_4: 6840c8ff46bd Layer already exists 
+Pushing service_2: 66183893ba24 Layer already exists 
+Pushing service_2: 6840c8ff46bd Layer already exists 
+Pushing service_3: 56f03898239d Pushing [=========>                                         ]  5.038MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [=====>                                             ]  2.507MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=========>                                         ]  5.326MB/27.15MB
+Pushing service_3: 56f03898239d Pushing [===========>                                       ]   6.43MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [======>                                            ]  2.946MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [============>                                      ]  6.724MB/27.15MB
+Pushing service_4: 97d5fec864d8 Layer already exists 
+Pushing service_2: 97d5fec864d8 Layer already exists 
+Pushing service_3: 56f03898239d Pushing [============>                                      ]  6.998MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [=======>                                           ]   3.39MB/21.69MB
+Pushing service_3: 97d5fec864d8 Layer already exists 
+Pushing service_3: 56f03898239d Pushing [=============>                                     ]   7.57MB/27.15MB
+Pushing service_1: 97d5fec864d8 Layer already exists 
+Pushing service_3: 56f03898239d Pushing [==============>                                    ]  7.844MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [=========>                                         ]  4.083MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=================>                                 ]  9.246MB/27.15MB
+Pushing service_3: 56f03898239d Pushing [=================>                                 ]  9.527MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [==========>                                        ]  4.534MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [==================>                                ]   10.1MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [===========>                                       ]  4.997MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [>                                                  ]    237kB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=>                                                 ]  465.9kB/21.69MB
+Pushing service_3: 56f03898239d Pushing [===================>                               ]  10.67MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [>                                                  ]  286.7kB/27.14MB
+Pushing service_3: 56f03898239d Pushing [====================>                              ]  11.22MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [==>                                                ]  924.7kB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=====================>                             ]  11.79MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [============>                                      ]   5.44MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=>                                                 ]  571.8kB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [==>                                                ]  1.146MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=============>                                     ]  5.875MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [==============>                                    ]  6.124MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [===>                                               ]  1.382MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [==>                                                ]  1.125MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [====>                                              ]  2.063MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [===>                                               ]  1.692MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [======>                                            ]  2.727MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [======================>                            ]  12.09MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [=======>                                           ]  3.169MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [======================>                            ]  12.38MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [=======>                                           ]   3.39MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [===============>                                   ]  6.807MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [===>                                               ]  1.977MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [========>                                          ]  3.613MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [================>                                  ]  7.024MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=======================>                           ]  12.68MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [================>                                  ]  7.258MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [====>                                              ]  2.249MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [========================>                          ]  13.22MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [=========>                                         ]  4.083MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=================>                                 ]  7.485MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=========>                                         ]  4.314MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=========================>                         ]  13.79MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [===================>                               ]  8.646MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [==========>                                        ]  4.756MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=====================>                             ]  9.339MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=========================>                         ]  14.07MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [======================>                            ]   9.79MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=======================>                           ]  10.02MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [==========================>                        ]  14.35MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [=====>                                             ]  2.821MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [========================>                          ]  10.46MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [============>                                      ]  5.221MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=====>                                             ]  3.103MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [============>                                      ]   5.44MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [======>                                            ]  3.376MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [========================>                          ]  10.71MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [===========================>                       ]  14.89MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [=========================>                         ]  11.17MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [===========================>                       ]  15.16MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [======>                                            ]  3.648MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [===========================>                       ]  11.87MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=============>                                     ]  5.657MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=======>                                           ]  4.195MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [============================>                      ]  12.31MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [========>                                          ]  4.467MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [==============>                                    ]  6.124MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [============================>                      ]  15.44MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [============================>                      ]  12.53MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [==============>                                    ]  6.341MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=========>                                         ]  5.036MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [=============================>                     ]  12.97MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [==============================>                    ]  16.58MB/27.15MB
+Pushing service_3: 56f03898239d Pushing [================================>                  ]  17.71MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [=========>                                         ]  5.324MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [==============================>                    ]  13.22MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [===============>                                   ]  6.807MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [==========>                                        ]  5.597MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [================>                                  ]  7.024MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [==============================>                    ]  13.44MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=================================>                 ]  17.98MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [================>                                  ]  7.258MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [===================================>               ]   19.1MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [===========>                                       ]  6.153MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [===============================>                   ]  13.66MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [================================>                  ]  14.09MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [============>                                      ]  6.721MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [====================================>              ]  19.66MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [==================>                                ]  7.954MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=====================>                             ]   9.12MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=============>                                     ]  7.293MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [================================>                  ]  14.31MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [====================================>              ]  19.93MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [=====================>                             ]  9.339MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [========================>                          ]  10.46MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [========================>                          ]  10.71MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=================================>                 ]  14.53MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=====================================>             ]  20.51MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [=============>                                     ]  7.568MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [==========================>                        ]  11.41MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [==================================>                ]  14.75MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [======================================>            ]  21.06MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [==============>                                    ]  8.129MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [===========================>                       ]  12.09MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [===================================>               ]  15.21MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=======================================>           ]  21.64MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [================>                                  ]  8.693MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [============================>                      ]  12.53MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [====================================>              ]  15.65MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=============================>                     ]  12.75MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=================>                                 ]  9.244MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [=========================================>         ]  22.49MB/27.15MB
+Pushing service_2: bf44dada7bb9 Pushing [=============================>                     ]  12.97MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [======================================>            ]  16.56MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [==================>                                ]  9.808MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [==========================================>        ]  23.06MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [=======================================>           ]  17.03MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [===============================>                   ]  13.66MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [========================================>          ]  17.48MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [================================>                  ]  14.09MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [===================>                               ]   10.4MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [===========================================>       ]  23.62MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [===================>                               ]  10.67MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [=========================================>         ]  17.94MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [================================>                  ]  14.31MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [============================================>      ]  24.17MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [==========================================>        ]  18.38MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [==================================>                ]  14.75MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=====================>                             ]  11.52MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [==================================>                ]  14.98MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [=============================================>     ]  24.78MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [==========================================>        ]   18.6MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [=======================>                           ]  12.95MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [=========================>                         ]  14.07MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [===================================>               ]  15.44MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [==========================>                        ]  14.34MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [===========================================>       ]  18.83MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [==============================================>    ]  25.05MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [============================>                      ]  15.44MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [==============================>                    ]  16.57MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [===============================================>   ]  25.62MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [============================================>      ]   19.3MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [====================================>              ]  15.65MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [===============================>                   ]  16.85MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [====================================>              ]  15.88MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [================================================>  ]   26.2MB/27.15MB
+Pushing service_2: fdde39396616 Pushing [=================================>                 ]  18.25MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [===================================>               ]  19.37MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [=================================================> ]  26.79MB/27.15MB
+Pushing service_3: 8b1b3b391054 Pushing [=============================================>     ]  19.53MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=====================================>             ]   16.1MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [====================================>              ]  19.93MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [======================================>            ]  16.79MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [==============================================>    ]     20MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=======================================>           ]  17.26MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [==================================================>]  27.65MB
+Pushing service_3: 8b1b3b391054 Pushing [===============================================>   ]  20.67MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [======================================>            ]  20.78MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [========================================>          ]  21.94MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [==================================================>]  28.23MB
+Pushing service_3: 8b1b3b391054 Pushing [================================================>  ]  20.91MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [========================================>          ]  17.72MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [========================================>          ]  22.21MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [==================================================>]  28.79MB
+Pushing service_2: bf44dada7bb9 Pushing [=========================================>         ]  17.94MB/21.69MB
+Pushing service_3: 56f03898239d Pushing [==================================================>]  29.08MB
+Pushing service_2: fdde39396616 Pushing [=========================================>         ]  22.76MB/27.14MB
+Pushing service_3: 56f03898239d Pushing [==================================================>]  29.17MB
+Pushing service_2: fdde39396616 Pushing [==========================================>        ]  23.06MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [================================================>  ]  21.14MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=========================================>         ]  18.16MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=================================================> ]  21.36MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [==========================================>        ]  18.38MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [=================================================> ]  21.59MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [===========================================>       ]  23.62MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [==========================================>        ]   18.6MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [============================================>      ]  23.89MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [==================================================>]  22.32MB
+Pushing service_2: fdde39396616 Pushing [============================================>      ]  24.17MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [===========================================>       ]  18.83MB/21.69MB
+Pushing service_3: 8b1b3b391054 Pushing [==================================================>]  23.02MB
+Pushing service_3: 8b1b3b391054 Pushing [==================================================>]  23.24MB
+Pushing service_2: fdde39396616 Pushing [=============================================>     ]  24.78MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [==============================================>    ]  25.05MB/27.14MB
+Pushing service_3: 8b1b3b391054 Pushing [==================================================>]   23.4MB
+Pushing service_2: bf44dada7bb9 Pushing [===========================================>       ]  19.07MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [==============================================>    ]  25.33MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [============================================>      ]   19.3MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [=============================================>     ]  19.77MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [================================================>  ]  26.19MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [=================================================> ]  26.79MB/27.14MB
+Pushing service_2: fdde39396616 Pushing [=================================================> ]  27.07MB/27.14MB
+Pushing service_2: bf44dada7bb9 Pushing [==============================================>    ]  20.21MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [===============================================>   ]  20.44MB/21.69MB
+Pushing service_3: 56f03898239d Pushed 
+Pushing service_2: fdde39396616 Pushing [==================================================>]  27.65MB
+Pushing service_2: bf44dada7bb9 Pushing [===============================================>   ]  20.67MB/21.69MB
+Pushing service_2: fdde39396616 Pushing [==================================================>]  27.94MB
+Pushing service_2: fdde39396616 Pushing [==================================================>]  28.22MB
+Pushing service_2: fdde39396616 Pushing [==================================================>]  28.79MB
+Pushing service_2: fdde39396616 Pushing [==================================================>]  29.17MB
+Pushing service_2: bf44dada7bb9 Pushing [=================================================> ]  21.36MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushing [==================================================>]  21.83MB
+Pushing service_2: bf44dada7bb9 Pushing [==================================================>]  22.08MB
+Pushing service_2: bf44dada7bb9 Pushing [==================================================>]  23.24MB
+Pushing service_2: bf44dada7bb9 Pushing [==================================================>]   23.4MB
+Pushing service_3: 8b1b3b391054 Pushed 
+Pushing service_1: 323e29ae1be9 Pushing [>                                                  ]    237kB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [=>                                                 ]  465.9kB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [==>                                                ]  924.7kB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [>                                                  ]  291.3kB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [===>                                               ]  1.382MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=>                                                 ]  853.3kB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [====>                                              ]   1.83MB/21.69MB
+Pushing service_2: fdde39396616 Pushed 
+Pushing service_1: 6d8392515670 Pushing [===>                                               ]  1.696MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [====>                                              ]  2.063MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [====>                                              ]  2.528MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [=====>                                             ]  2.507MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [======>                                            ]  3.381MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [======>                                            ]  2.946MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=======>                                           ]  4.199MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [========>                                          ]  3.613MB/21.69MB
+Pushing service_2: bf44dada7bb9 Pushed 
+Pushing service_1: 6d8392515670 Pushing [========>                                          ]  4.471MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [========>                                          ]  4.744MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [==========>                                        ]  4.534MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [==========>                                        ]  4.756MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [==========>                                        ]  5.885MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [=============>                                     ]  5.875MB/21.69MB
+Pushing service_4: 156f52a4efcd Layer already exists 
+Pushing service_1: 6d8392515670 Pushing [============>                                      ]  7.001MB/27.15MB
+Pushing service_4: 12551adf8f88 Layer already exists 
+Pushing service_1: 323e29ae1be9 Pushing [================>                                  ]  7.024MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [==================>                                ]   8.18MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [===============>                                   ]  8.409MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [================>                                  ]   8.97MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [======================>                            ]  9.562MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=================>                                 ]   9.53MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [=======================>                           ]  10.24MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [====================>                              ]  10.95MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [==========================>                        ]  11.41MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [======================>                            ]  12.38MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [============================>                      ]  12.53MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [===============================>                   ]  13.66MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=======================>                           ]  12.68MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [===============================>                   ]  13.88MB/21.69MB
+Pushing service_3: 5afd661c6106 Layer already exists 
+Pushing service_4: 5afd661c6106 Layer already exists 
+Pushing service_2: 5afd661c6106 Layer already exists 
+Pushing service_1: 5afd661c6106 Layer already exists 
+Pushing service_1: 6d8392515670 Pushing [=========================>                         ]  14.07MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [==================================>                ]  14.98MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [===================================>               ]  15.21MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [=====================================>             ]  16.31MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [==========================>                        ]  14.35MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [======================================>            ]  16.56MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [=======================================>           ]  17.03MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [===========================>                       ]  14.89MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [============================>                      ]  15.72MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [========================================>          ]  17.48MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=============================>                     ]  16.29MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [=========================================>         ]  17.94MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [==========================================>        ]  18.38MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [=============================================>     ]  19.53MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [===============================>                   ]  17.15MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [=============================================>     ]  19.77MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=================================>                 ]  17.99MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [=================================>                 ]  18.26MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [==============================================>    ]     20MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [===================================>               ]  19.37MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [===============================================>   ]  20.44MB/21.69MB
+Pushing service_1: 6d8392515670 Pushing [=====================================>             ]  20.23MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [=================================================> ]  21.59MB/21.69MB
+Pushing service_1: 323e29ae1be9 Pushing [==================================================>]  21.83MB
+Pushing service_1: 6d8392515670 Pushing [=======================================>           ]  21.36MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [==================================================>]   22.8MB
+Pushing service_1: 6d8392515670 Pushing [=======================================>           ]  21.64MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [========================================>          ]  21.95MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [==========================================>        ]  23.07MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [============================================>      ]  24.18MB/27.15MB
+Pushing service_1: 323e29ae1be9 Pushing [==================================================>]   23.4MB
+Pushing service_1: 6d8392515670 Pushing [=============================================>     ]  24.48MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [==============================================>    ]  25.33MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [================================================>  ]   26.5MB/27.15MB
+Pushing service_1: 6d8392515670 Pushing [==================================================>]  27.65MB
+Pushing service_1: 6d8392515670 Pushing [==================================================>]   28.8MB
+Pushing service_1: 6d8392515670 Pushing [==================================================>]  29.18MB
+Pushing service_1: 6d8392515670 Pushed 
+Pushing service_1: 323e29ae1be9 Pushed 
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (swarm deploy )
+[Pipeline] sh
++ ssh Kaobi@docker-vmj docker stack deploy --compose-file /home/Kaobi/docker-demos/prize-generator/docker-compose.yaml namegenerator
+Ignoring unsupported options: build
+
+Ignoring deprecated options:
+
+container_name: Setting the container name is not supported.
+
+Creating network namegenerator_example-net
+Creating service namegenerator_service_2
+Creating service namegenerator_service_3
+Creating service namegenerator_service_4
+Creating service namegenerator_nginx
+Creating service namegenerator_service_1
+[Pipeline] sh
+Warning: was asked to run an empty script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
