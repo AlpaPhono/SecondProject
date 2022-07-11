@@ -30,7 +30,7 @@ The application randomly allocates artist stage names to the user using the four
 > This service takes the output from service 2 and service 3 and based on that generates a suggested genre to be provided to the front end.
 
 `Service 5`
-> Nginx reverse proxy
+> Nginx reverse proxy, This services main role was to run as a reverse proxy between port 80 and port 5000 for the front-end service.
 
 The following diagram illustrates how a user and the services interact with one another. 
 [insert diagram]
@@ -45,18 +45,34 @@ ___
 To fit one of the requirements I used a trello for my project tracking. Tasks were assigned that would
 [insert trello board]
 ### Risk Assesment
-At the start of the project a risk assesment was carried out. The diagram below contains some of the possible risks that could occur during the process of creating the application. The likelihood of the risks occuring are colour coded to match levels given in a supplimented Key. Red being high risk and green being unlikely. A section for Mitigations was created to seperate from things that were currently implimented to things that could be considered further along the project.
+At the start of the project a risk assesment was carried out. The diagram below contains some of the possible risks that could occur during the process of creating the application. The likelihood of the risks occuring are colour coded to match levels given in a supplimented Key. Red being high risk and green being unlikely. A section for mitigations was created to seperate from things that were currently implimented to things that could be considered further along the project.
 [insert risk assesment]
 
 ## Project Pipeline
-
+[insert image]
 ### Development Process
 During the entire development of the app, Github was used for version control. Github is useful as as works as both remote storage for my work but also as a webhook that can trigger new builds within my jenkins pipeline.
 The web application was written in python, using the micro-framework Flask.
 
 ### Unit Testing
+> I carried out unit tests against the 4 of my services. Each service had its own uniquely defined tests. The tests were run via a test.sh script. Below are the test results of the current build of the project can be viewed.
+
+### Build and Deploy##
+The code was built using docker, a containerisation tool. Then deployed onto different vm's using the orchestration tool docker swarm.
+
+### Automation
 ___
-> I carried out unit tests against the 4 of my services. Each service had its own uniquely defined tests. The tests were run via a test.sh script. Below the test results of the current build of the project can be viewed.
+This project runs on a CI/CD pipeline using jenkins installed on a vm. Jenkins allows for webhooks to be attached to the nameGenerator branch of my git repo. When code is pushed to the repository it will trigger a new build inside jenksins.
+Ansible was used to configure swarm worker vm's by installing docker and adding them to the swarm.
+
+
+
+
+ 
+
+### Current Imporvements
+- Using a feature branch model to better organise the version control of my web app. A development branch was made however a seperate branch wasn't implimented when adding a new feature. This is an important approach to adopt as it allows a developer to build upon thier code with confidence that their last working commit is safe in within another branch.
+
 
 
 
