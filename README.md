@@ -34,16 +34,17 @@ The application randomly allocates artist stage names to the user using the four
 > Nginx reverse proxy, This services main role was to run as a reverse proxy between port 80 and port 5000 for the front-end service.
 
 The following diagram illustrates how a user and the services interact with one another. 
-[insert diagram]
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/user%20services%20diagram.png" alt="test" width="1000" height="450"></p>
 
 ### The app
 ___
 The font-end user interface uses a very basic layout. It displays the randomly generated stage name and a genre suggestion. Upon refreshing the page a new name would be generated with a different genre suggestion
-[insert screen shot of front end]
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/service%201.png" alt="test" width="1000" height="450"></p>
 
 ### Project Tracking 
 ___
-To fit one of the requirements I used a trello for my project tracking. Tasks were assigned that would
+To fit one of the requirements I used a trello for my project tracking. Tasks were assigned that would aid in meeting the acceptance criteria for the project.. The MOSCOW principle was used with colour coding.
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/trello%20board.png" alt="test" width="1000" height="450"></p>
 
 ### Risk Assesment
 At the start of the project a risk assesment was carried out. The diagram below contains some of the possible risks that could occur during the process of creating the application. The likelihood of the risks occuring are colour coded to match levels given in a supplimented Key. Red being high risk and green being unlikely. A section for mitigations was created to seperate from things that were currently implimented to things that could be considered further along the project.
@@ -57,6 +58,17 @@ The web application was written in python, using the micro-framework Flask.
 
 ### Unit Testing
 > I carried out unit tests against the 4 of my services. Each service had its own uniquely defined tests. The tests were run via a test.sh script. Below are the test results of the current build of the project can be viewed.
+***Service_1 test***
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/service%201%20tesr.png" alt="test" width="1000" height="450"></p>
+***Service_2 test***
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/service%202%20tesr.png" alt="test" width="1000" height="450"></p>
+***Service_3 test***
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/service%203%20tesr.png" alt="test" width="1000" height="450"></p>
+***Service_4 test***
+<p><img src="https://github.com/AlpaPhono/SecondProject/blob/nameGenerator/imagesAndDocs/Service4%20test.png" alt="test" width="1000" height="450"></p>
+
+## Project Pipeline
+___
 
 ### Build and Deploy##
 The code was built using docker, a containerisation tool. Then deployed onto different vm's using the orchestration tool docker swarm.
